@@ -25,7 +25,7 @@ public class Move : MonoBehaviour {
     void Update()
     {
         //if statement to determine if a button has been pressed
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.A))
 
         {
             //this refers to the object in which the current script is attatched to
@@ -33,7 +33,7 @@ public class Move : MonoBehaviour {
             position.x--;
             this.transform.position = position;
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.D))
         {
             Vector3 position = this.transform.position;
             //by putting ++ after the position x, I am able to increment the position of x by one
