@@ -78,8 +78,10 @@ public class Move : MonoBehaviour {
             }
     void OnCollisionEnter2D(Collision2D c)
     {
+        Debug.Log("hitting something");
         if (c.gameObject.tag == "Platform")
         {
+            Debug.Log("hitting PLATFORM");
             c.gameObject.GetComponent<platformScript>().enemy.GetComponent<Enemy>().toggleFollow();
         }
     }
