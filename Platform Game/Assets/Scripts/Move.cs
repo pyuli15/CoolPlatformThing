@@ -10,7 +10,7 @@ public class Move : MonoBehaviour {
     //public variable for the mouse x
     public bool jumping;
     public float curJumpvel;
-    float startY;
+    public float startY;
     public float gravity;
 
 
@@ -41,19 +41,28 @@ public class Move : MonoBehaviour {
             //making the altered position the new position
             this.transform.position = position;
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+           {
+            Jump();
+
+           }
     }
     void Jump()
     {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (jumping == false)
             {
-                //adding to the y by the current jump velocity
-                transform.position += new Vector3(0, curJumpvel, 0);
                 //apply gravity to the situation by subtracting gravity from the speed
                 //dynamic speed of the jumping man that we want to change, so we want to subtract the current by the gravity
                 curJumpvel -= gravity;
                 //seeing of the current position is lower than the start position
             }
-            /*
+            else
+            {
+            //adding to the y by the current jump velocity
+            transform.position += new Vector3(0, curJumpvel, 0);
+
+            }
+            
             if (transform.position.y <= startY)
                 {
                     jumping = false;
@@ -64,7 +73,7 @@ public class Move : MonoBehaviour {
                     //print(transform.position.x);
 
                 }
-                */
+                
 
             }
         }
