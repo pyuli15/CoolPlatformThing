@@ -76,6 +76,15 @@ public class Move : MonoBehaviour {
                 
 
             }
+    void OnCollisionEnter2D(Collision2D c)
+    {
+        if (c.gameObject.tag == "Platform")
+        {
+            c.gameObject.GetComponent<platformScript>().enemy.GetComponent<Enemy>().toggleFollow();
+        }
+    }
+
+
         }
 
     
