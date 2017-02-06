@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
         if (follow == true)
         {
             followPlayer();
-            
+
         }
     }
     void followPlayer()
@@ -35,7 +35,8 @@ public class Enemy : MonoBehaviour
         directionToPlayer.Normalize();
 
         bool willBeOnGround = Physics2D.Raycast((new Vector2(transform.position.x, transform.position.y) + (directionToPlayer * MoveSpeed)) * Time.deltaTime, Vector2.down, 10, platformLayer);
-        if (willBeOnGround) {
+        if (willBeOnGround)
+        {
             //this can be made into its own vector
             transform.position += new Vector3(directionToPlayer.x, directionToPlayer.y, 0) * MoveSpeed * Time.deltaTime;
         }
@@ -45,5 +46,15 @@ public class Enemy : MonoBehaviour
     {
         follow = !follow;
     }
-}
 
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.tag == "Player")
+        {
+            Destroy(coll.gameObject);
+
+        }
+    }
+
+}

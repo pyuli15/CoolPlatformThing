@@ -83,10 +83,11 @@ public class Move : MonoBehaviour {
         {
             Debug.Log("hitting PLATFORM");
             c.gameObject.GetComponent<platformScript>().enemy.GetComponent<Enemy>().toggleFollow();
+            
         }
     }
 
 
-        }
+}
 
     
