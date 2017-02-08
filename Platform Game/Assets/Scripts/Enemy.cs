@@ -47,14 +47,13 @@ public class Enemy : MonoBehaviour
         follow = !follow;
     }
 
-
-    void OnCollisionEnter2D(Collision2D coll)
+    void OnTriggerEnter(Collider2D c)
     {
-        if (coll.gameObject.tag == "Player")
+        if(c.gameObject.tag == "Enemy")
         {
-            Destroy(coll.gameObject);
-
+            toggleFollow();
         }
     }
+   
 
 }

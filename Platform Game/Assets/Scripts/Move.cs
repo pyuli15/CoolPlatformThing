@@ -9,16 +9,20 @@ public class Move : MonoBehaviour {
     //possibly make the character move using the direction of the mouse x?
     //public variable for the mouse x
     public bool jumping;
-    public float curJumpvel;
+    public Vector2 velocity;
     public float startY;
     public float gravity;
+    public float speed;
+    public float curJumpvel;
+    public Rigidbody2D character;
+    
 
 
 
     // Use this for initialization
     void Start ()
     {
-		
+        character = GetComponent<Rigidbody2D>();
 	}
 
     // Update is called once per frame
@@ -28,18 +32,27 @@ public class Move : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.A))
 
         {
+            //use rigid body 2d move position
+            character.MovePosition(character.position * speed);
             //this refers to the object in which the current script is attatched to
+            /*
             Vector3 position = this.transform.position;
             position.x--;
             this.transform.position = position;
+            */
         }
+
         if (Input.GetKeyDown(KeyCode.D))
         {
+            character.MovePosition(character.position + velocity);
+
+            /*
             Vector3 position = this.transform.position;
             //by putting ++ after the position x, I am able to increment the position of x by one
             position.x++;
             //making the altered position the new position
             this.transform.position = position;
+            */
         }
         if (Input.GetKeyDown(KeyCode.Space))
            {
@@ -59,21 +72,22 @@ public class Move : MonoBehaviour {
             else
             {
             //adding to the y by the current jump velocity
-            transform.position += new Vector3(0, curJumpvel, 0);
+            character.MovePosition(character.position * 3);
 
             }
             
-            if (transform.position.y <= startY)
+            
+            if (character.position.y <= startY)
                 {
                     jumping = false;
                     //move back up to the floor position so that we start back at the original position
-                    transform.position = new Vector3(transform.position.x, startY, 0);
+                    character.position = new Vector3(character.position.x, startY, 0);
 
                     //transform.position = new Vector3(1, 0, 0);
                     //print(transform.position.x);
 
                 }
-                
+               
 
             }
     void OnCollisionEnter2D(Collision2D c)
