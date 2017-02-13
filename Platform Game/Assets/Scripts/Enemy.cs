@@ -43,13 +43,18 @@ public class Enemy : MonoBehaviour
     }
 
     public void toggleFollow()
-    {
+    {      
         follow = !follow;
+
+        if (player == null)
+        {
+            follow = !follow;
+        }
     }
 
-    void OnTriggerEnter(Collider2D c)
+    void OnTriggerEnter2D(Collider2D coll)
     {
-        if(c.gameObject.tag == "Enemy")
+        if(coll.gameObject.tag == "Enemy")
         {
             toggleFollow();
         }
