@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour {
     public float fullHealth;
     public GameObject bloodFX;
     float currentHealth;
+    
 
     CharacterMovement controlMovement;
 
@@ -44,7 +45,20 @@ public class PlayerHealth : MonoBehaviour {
         {
             playerDead();
         }
+
     }
+    void OnTriggerEnter(Collider coll)
+    {
+        if (coll.tag == "Spike")
+        {
+            currentHealth -= damage;
+            healthSlider.value = currentHealth;
+            Instantiate(bloodFX, transform.position, transform.rotation);
+        }
+        //basically add the element that if the player touches the spike collider that is tagged with spike and remove health that way
+    }
+
+
 
     public void playerDead()
     {
