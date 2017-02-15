@@ -30,15 +30,19 @@ public class Enemy : MonoBehaviour
     }
     void followPlayer()
     {
-        Vector2 directionToPlayer = player.position - transform.position;
-        directionToPlayer.y = 0;
-        directionToPlayer.Normalize();
-
-        bool willBeOnGround = Physics2D.Raycast((new Vector2(transform.position.x, transform.position.y) + (directionToPlayer * MoveSpeed)) * Time.deltaTime, Vector2.down, 10, platformLayer);
-        if (willBeOnGround)
+        if (player != null)
         {
-            //this can be made into its own vector
-            transform.position += new Vector3(directionToPlayer.x, directionToPlayer.y, 0) * MoveSpeed * Time.deltaTime;
+            Vector2 directionToPlayer = player.position - transform.position;
+            directionToPlayer.y = 0;
+            directionToPlayer.Normalize();
+
+            bool willBeOnGround = Physics2D.Raycast((new Vector2(transform.position.x, transform.position.y) + (directionToPlayer * MoveSpeed)) * Time.deltaTime, Vector2.down, 10, platformLayer);
+
+            if (willBeOnGround)
+            {
+                //this can be made into its own vector
+                transform.position += new Vector3(directionToPlayer.x, directionToPlayer.y, 0) * MoveSpeed * Time.deltaTime;
+            }
         }
     }
 
@@ -46,10 +50,11 @@ public class Enemy : MonoBehaviour
     {      
         follow = !follow;
 
-        if (player == null)
+        /*if (player == null)
         {
             follow = !follow;
         }
+        */
     }
 
     void OnTriggerEnter2D(Collider2D coll)

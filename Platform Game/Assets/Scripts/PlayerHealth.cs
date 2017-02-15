@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour {
     //max health
@@ -37,6 +38,7 @@ public class PlayerHealth : MonoBehaviour {
         if (damage <= 0) return;
         currentHealth -= damage;
         healthSlider.value = currentHealth;
+        Instantiate(bloodFX, transform.position, transform.rotation);
 
         if (currentHealth <= 0)
         {
@@ -46,7 +48,12 @@ public class PlayerHealth : MonoBehaviour {
 
     public void playerDead()
     {
-        Instantiate(bloodFX, transform.position, transform.rotation);
-        Destroy(gameObject);
+       
+        gameOver();
+    }
+
+    void gameOver()
+    {
+        SceneManager.LoadScene(2);
     }
 }

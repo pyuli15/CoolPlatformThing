@@ -21,27 +21,20 @@ public class enemyDamage : MonoBehaviour {
 
     }
 
-    void OnTriggerStay2D(Collider2D other)
+    void OnCollisionStay2D(Collision2D coll)
     {
-        if (other.tag == "Player" && nextDamage < Time.time)
+        if (coll.gameObject.tag == "Player" && nextDamage < Time.time)
         {
-            PlayerHealth thePlayerHealth = other.gameObject.GetComponent<PlayerHealth>();
+            PlayerHealth thePlayerHealth = coll.gameObject.GetComponent<PlayerHealth>();
             thePlayerHealth.addDamage(damage);
-            nextDamage = Time.time + damageRate;
+            //nextDamage = Time.time + damageRate;
 
             //pushBack();
 
         }
     }
-    /*
-    void pushBack()
-        {
-            Vector2 pushDirection = new Vector2(0, 1).normalized;
-        pushDirection += pushBackForce;
 
-        }
-    */
-    }
+}
    
 
 
