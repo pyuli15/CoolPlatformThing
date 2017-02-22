@@ -18,6 +18,13 @@ public class CharacterMovement : MonoBehaviour {
     KeyCode left;
     KeyCode right;
 
+    //for shooting
+    public Transform gunTip;
+    public GameObject bullet;
+    float fireRate = 0.5f;
+    float nextFire = 0f;
+
+
 
 
     // Use this for initialization
@@ -35,6 +42,12 @@ public class CharacterMovement : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Z))
         {
             jumpFlag = true;
+        }
+
+        //player shooting
+        if (Input.GetAxisRaw("Fire1") > 0)
+        {
+            fireRocket();
         }
     }
     void FixedUpdate()
@@ -91,6 +104,15 @@ public class CharacterMovement : MonoBehaviour {
             Debug.Log("hitting PLATFORM");
             coll.gameObject.GetComponent<platformScript>().enemy.GetComponent<Enemy>().toggleFollow();
 
+        }
+    }
+
+    void fireRocket()
+    {
+        if (Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            Instantiate(bullet, gunTip.position, Quaternion.Euler(new Vector3(0, 0, 0)));
         }
     }
 }
