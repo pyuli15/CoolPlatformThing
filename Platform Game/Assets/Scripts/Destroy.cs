@@ -22,19 +22,19 @@ public class Destroy : MonoBehaviour {
 	}
 
     //creating a collider that tests to see if an enemy has been hit or not
-    void OnTriggerEnter2D(Collider2D coll)
+    void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.layer == LayerMask.NameToLayer("Shootable"))
         {
             myPc.removeForce();
             Destroy(gameObject);
         }
-        /*
-        if (coll.tag == "Enemy")
+        
+        if (coll.gameObject.tag == "Enemy")
         {
-            //enemyHealth hurtEnemy = coll.gameObject.GetComponent<enemyHealth>();
-            //hurtEnemy.addDamage(weaponDamage);
+            enemyHealth hurtEnemy = coll.gameObject.GetComponent<enemyHealth>();
+            hurtEnemy.addDamage(weaponDamage);
         }
-        */
+        
     }
 }

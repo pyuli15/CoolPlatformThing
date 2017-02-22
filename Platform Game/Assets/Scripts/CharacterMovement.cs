@@ -24,6 +24,8 @@ public class CharacterMovement : MonoBehaviour {
     float fireRate = 0.5f;
     float nextFire = 0f;
 
+  
+
 
 
 
@@ -34,6 +36,7 @@ public class CharacterMovement : MonoBehaviour {
         jumpButton = KeyCode.Z;
         left = KeyCode.LeftArrow;
         right = KeyCode.RightArrow;
+       
     }
 
     // Update is called once per frame
@@ -105,6 +108,7 @@ public class CharacterMovement : MonoBehaviour {
             coll.gameObject.GetComponent<platformScript>().enemy.GetComponent<Enemy>().toggleFollow();
 
         }
+        
     }
 
     void fireRocket()
