@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour {
     public float fullHealth;
     public GameObject bloodFX;
     public float damage;
+    
  
     float currentHealth;
     
@@ -28,6 +29,7 @@ public class PlayerHealth : MonoBehaviour {
         //HUD Initialization
         healthSlider.maxValue = fullHealth;
         healthSlider.value = fullHealth;
+
 	}
 	
 	// Update is called once per frame
@@ -43,10 +45,11 @@ public class PlayerHealth : MonoBehaviour {
         healthSlider.value = currentHealth;
         Instantiate(bloodFX, transform.position, transform.rotation);
 
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 )
         {
             playerDead();
         }
+        
 
     }
     void OnTriggerEnter(Collider coll)

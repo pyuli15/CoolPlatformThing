@@ -4,22 +4,37 @@ using UnityEngine;
 
 public class Destroy : MonoBehaviour {
 
+    ProjectileController myPc;
+
+    public float weaponDamage;
+
 	// Use this for initialization
-	void Start () {
-		
+	void Start ()
+    {
+        myPc = GetComponentInParent<ProjectileController>();
+
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
 	}
 
     //creating a collider that tests to see if an enemy has been hit or not
-    void OnTriggerEnter(Collider coll)
+    void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.gameObject.tag == "enemy")
+        if (coll.gameObject.layer == LayerMask.NameToLayer("Shootable"))
         {
+            myPc.removeForce();
             Destroy(gameObject);
         }
+        /*
+        if (coll.tag == "Enemy")
+        {
+            //enemyHealth hurtEnemy = coll.gameObject.GetComponent<enemyHealth>();
+            //hurtEnemy.addDamage(weaponDamage);
+        }
+        */
     }
 }
