@@ -8,6 +8,8 @@ public class PlayerHealth : MonoBehaviour {
     //max health
     public float fullHealth;
     public GameObject bloodFX;
+    public float damage;
+ 
     float currentHealth;
     
 

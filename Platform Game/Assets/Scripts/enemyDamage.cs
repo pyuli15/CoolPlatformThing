@@ -27,7 +27,7 @@ public class enemyDamage : MonoBehaviour {
         {
             PlayerHealth thePlayerHealth = coll.gameObject.GetComponent<PlayerHealth>();
             thePlayerHealth.addDamage(damage);
-            //nextDamage = Time.time + damageRate;
+            nextDamage = Time.time + damageRate;
 
             //pushBack();
 
