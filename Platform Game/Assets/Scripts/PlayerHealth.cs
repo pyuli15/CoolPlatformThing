@@ -61,6 +61,14 @@ public class PlayerHealth : MonoBehaviour {
             Instantiate(bloodFX, transform.position, transform.rotation);
         }
         //basically add the element that if the player touches the spike collider that is tagged with spike and remove health that way
+
+        if (coll.tag == "Enemy")
+        {
+            currentHealth -= damage;
+            healthSlider.value = currentHealth;
+            Instantiate(bloodFX, transform.position, transform.rotation);
+
+        }
     }
 
 

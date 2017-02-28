@@ -64,6 +64,14 @@ public class Enemy : MonoBehaviour
             toggleFollow();
         }
     }
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.collider.gameObject.tag == "Bullet")
+        {
+            Destroy(gameObject);
+        }
+    }
    
 
 }

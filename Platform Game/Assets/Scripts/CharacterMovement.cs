@@ -108,6 +108,7 @@ public class CharacterMovement : MonoBehaviour {
             coll.gameObject.GetComponent<platformScript>().enemy.GetComponent<Enemy>().toggleFollow();
 
         }
+
         
     }
 
