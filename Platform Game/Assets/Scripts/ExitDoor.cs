@@ -18,7 +18,7 @@ public class ExitDoor : MonoBehaviour {
     {
         if (c.tag == "Player")
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
     }
