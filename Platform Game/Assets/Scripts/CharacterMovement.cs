@@ -105,8 +105,13 @@ public class CharacterMovement : MonoBehaviour {
         if (coll.gameObject.tag == "Platform")
         {
             Debug.Log("hitting PLATFORM");
-            coll.gameObject.GetComponent<platformScript>().enemy.GetComponent<Enemy>().toggleFollow();
 
+          
+
+        }
+        if (coll.gameObject.tag == "Enemy")
+        {
+            Debug.Log("Hitting Enemy");
         }
 
         

@@ -96,7 +96,7 @@ public class Move : MonoBehaviour {
         if (c.gameObject.tag == "Platform")
         {
             Debug.Log("hitting PLATFORM");
-            c.gameObject.GetComponent<platformScript>().enemy.GetComponent<Enemy>().toggleFollow();
+           // c.gameObject.GetComponent<platformScript>().enemy.GetComponent<Enemy>().toggleFollow();
             
         }
     }

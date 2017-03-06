@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     {
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        Debug.Log(player+"");
     }
 
     // Update is called once per frame
@@ -24,31 +25,39 @@ public class Enemy : MonoBehaviour
         //transform.position += transform.forward * MoveSpeed * Time.deltaTime;
         if (follow == true)
         {
-            followPlayer();
+            FollowPlayer();
 
         }
     }
-    void followPlayer()
+    void FollowPlayer()
     {
         if (player != null)
         {
+            Debug.Log("player is not null");
             Vector2 directionToPlayer = player.position - transform.position;
             directionToPlayer.y = 0;
             directionToPlayer.Normalize();
 
             bool willBeOnGround = Physics2D.Raycast((new Vector2(transform.position.x, transform.position.y) + (directionToPlayer * MoveSpeed)) * Time.deltaTime, Vector2.down, 10, platformLayer);
 
-            if (willBeOnGround)
+            Debug.Log(willBeOnGround + "");
+            if (true)
             {
+                
                 //this can be made into its own vector
                 transform.position += new Vector3(directionToPlayer.x, directionToPlayer.y, 0) * MoveSpeed * Time.deltaTime;
             }
+        }
+        if (player == null)
+        {
+            Debug.Log(player + "");
         }
     }
 
     public void toggleFollow()
     {      
-        follow = !follow;
+        //follow = !follow;
+        Debug.Log("following? " + follow);
 
         /*if (player == null)
         {
@@ -57,19 +66,37 @@ public class Enemy : MonoBehaviour
         */
     }
 
-    void OnTriggerEnter2D(Collider2D coll)
+    void OnCollisionExit2D(Collision2D coll)
     {
-        if(coll.gameObject.tag == "Enemy")
+        if (coll.gameObject.tag == "Platform")
+        {
+            if (coll.gameObject.GetComponent<platformScript>().playerOnPlatform)
+            {
+                follow = false;
+            }
+        }
+        /*
+        if (coll.gameObject.tag == "Enemy")
         {
             toggleFollow();
+            
         }
+        */
     }
 
     void OnCollisionEnter2D(Collision2D coll)
     {
+        if (coll.gameObject.tag == "Platform")
+        {
+            if (coll.gameObject.GetComponent<platformScript>().playerOnPlatform)
+            {
+                follow = true;
+            }
+        }
         if (coll.collider.gameObject.tag == "Bullet")
         {
             Destroy(gameObject);
+            Debug.Log("Hit by Something");
         }
     }
    
