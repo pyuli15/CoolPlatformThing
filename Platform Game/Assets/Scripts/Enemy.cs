@@ -73,6 +73,7 @@ public class Enemy : MonoBehaviour
             if (coll.gameObject.GetComponent<platformScript>().playerOnPlatform)
             {
                 follow = false;
+                Debug.Log("On Platform");
             }
         }
         /*
@@ -91,7 +92,10 @@ public class Enemy : MonoBehaviour
             if (coll.gameObject.GetComponent<platformScript>().playerOnPlatform)
             {
                 follow = true;
+                Debug.Log("Enemy should be moving");
+                
             }
+            
         }
         if (coll.collider.gameObject.tag == "Bullet")
         {
