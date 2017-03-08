@@ -85,7 +85,7 @@ public class Enemy : MonoBehaviour
         */
     }
 
-    void OnCollisionEnter2D(Collision2D coll)
+    void OnCollisionStay2D(Collision2D coll)
     {
         if (coll.gameObject.tag == "Platform")
         {

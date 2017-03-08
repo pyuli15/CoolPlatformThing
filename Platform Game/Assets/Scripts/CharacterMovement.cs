@@ -105,8 +105,7 @@ public class CharacterMovement : MonoBehaviour {
         if (coll.gameObject.tag == "Platform")
         {
             Debug.Log("hitting PLATFORM");
-
-          
+           
 
         }
         if (coll.gameObject.tag == "Enemy")

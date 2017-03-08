@@ -19,7 +19,9 @@ public class platformScript : MonoBehaviour {
     {
         if (coll.gameObject.tag == "Player")
         {
+               
             playerOnPlatform = true;
+            
         }
         /*
         if (coll.gameObject.tag == "Enemy")
@@ -36,7 +38,7 @@ public class platformScript : MonoBehaviour {
     {
         if (coll.gameObject.tag == "Player")
         {
-            playerOnPlatform = false;
+             playerOnPlatform = false;
         }
         /*
         if (coll.gameObject.tag == "Enemy")
