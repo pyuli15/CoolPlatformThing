@@ -83,6 +83,7 @@ public class PlayerHealth : MonoBehaviour {
 
     void gameOver()
     {
-        SceneManager.LoadScene(1);
+        Debug.Log("game over");
+        SceneManager.LoadScene(11);
     }
 }

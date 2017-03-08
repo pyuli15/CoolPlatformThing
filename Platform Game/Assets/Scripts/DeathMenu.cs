@@ -22,4 +22,6 @@ public class DeathMenu : MonoBehaviour {
     {
         SceneManager.LoadScene(0);
     }
+
+    
 }

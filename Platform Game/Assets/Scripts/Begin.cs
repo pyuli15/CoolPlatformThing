@@ -17,7 +17,7 @@ public class Begin : MonoBehaviour {
 
     public void StartScreen()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
     }
 
 }
