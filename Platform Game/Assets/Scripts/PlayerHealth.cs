@@ -45,7 +45,7 @@ public class PlayerHealth : MonoBehaviour {
         healthSlider.value = currentHealth;
         Instantiate(bloodFX, transform.position, transform.rotation);
 
-        if (currentHealth <= 0 )
+        if (currentHealth <= 0)
         {
             playerDead();
         }
@@ -58,7 +58,7 @@ public class PlayerHealth : MonoBehaviour {
         {
             currentHealth -= damage;
             healthSlider.value = currentHealth;
-            Instantiate(bloodFX, transform.position, transform.rotation);
+            
         }
         //basically add the element that if the player touches the spike collider that is tagged with spike and remove health that way
 
@@ -66,7 +66,7 @@ public class PlayerHealth : MonoBehaviour {
         {
             currentHealth -= damage;
             healthSlider.value = currentHealth;
-            Instantiate(bloodFX, transform.position, transform.rotation);
+           
 
         }
     }
@@ -81,6 +81,6 @@ public class PlayerHealth : MonoBehaviour {
 
     void gameOver()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(6);
     }
 }
