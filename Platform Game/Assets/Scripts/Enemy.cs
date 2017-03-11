@@ -95,6 +95,11 @@ public class Enemy : MonoBehaviour
                 Debug.Log("Enemy should be moving");
                 
             }
+
+            if (coll.gameObject.tag == "Flashlight")
+            {
+                follow = false;
+            }
             
         }
         if (coll.collider.gameObject.tag == "Bullet")
