@@ -21,7 +21,7 @@ public class Drown : MonoBehaviour {
     {
         if (coll.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene(10);
+            SceneManager.LoadScene(11);
         }
     }
 }

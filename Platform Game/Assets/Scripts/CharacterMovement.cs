@@ -24,6 +24,8 @@ public class CharacterMovement : MonoBehaviour {
     float fireRate = 0.5f;
     float nextFire = 0f;
 
+    public AudioClip[] hitSnds;
+
   
 
 
@@ -36,6 +38,8 @@ public class CharacterMovement : MonoBehaviour {
         jumpButton = KeyCode.Z;
         left = KeyCode.LeftArrow;
         right = KeyCode.RightArrow;
+
+        
        
     }
 
@@ -123,6 +127,11 @@ public class CharacterMovement : MonoBehaviour {
             nextFire = Time.time + fireRate;
             Instantiate(bullet, gunTip.position, Quaternion.Euler(new Vector3(0, 0, 0)));
         }
+    }
+
+    public void PlayHitSound()
+    {
+        Sound.me.PlaySound(hitSnds[Random.Range(0, hitSnds.Length)], 1f);
     }
 }
 
