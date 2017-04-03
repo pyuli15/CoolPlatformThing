@@ -19,4 +19,9 @@ public class YouDead : MonoBehaviour {
     {
         SceneManager.LoadScene(0);
     }
+
+    public void BackToFirst()
+    {
+        SceneManager.LoadScene(1);
+    }
 }
