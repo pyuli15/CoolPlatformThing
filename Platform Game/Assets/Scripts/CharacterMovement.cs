@@ -26,7 +26,7 @@ public class CharacterMovement : MonoBehaviour {
 
     public AudioClip[] hitSnds;
 
-  
+    private bool facingRight;
 
 
 
@@ -132,6 +132,7 @@ public class CharacterMovement : MonoBehaviour {
     public void PlayHitSound()
     {
         Sound.me.PlaySound(hitSnds[Random.Range(0, hitSnds.Length)], 1f);
+        
     }
 }
 
