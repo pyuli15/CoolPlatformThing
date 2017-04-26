@@ -29,8 +29,10 @@ public class PlayerHealth : MonoBehaviour {
         //HUD Initialization
         healthSlider.maxValue = fullHealth;
         healthSlider.value = fullHealth;
+        
+        
 
-	}
+    }
 	
 	// Update is called once per frame
 	void Update ()

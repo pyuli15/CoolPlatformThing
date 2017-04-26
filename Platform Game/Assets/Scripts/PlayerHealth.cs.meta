@@ -1,10 +1,13 @@
 fileFormatVersion: 2
 guid: d06009e58ad3fe745af76fecbadb525d
-timeCreated: 1486985687
+timeCreated: 1493218241
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - bloodFX: {fileID: 1666849112944984, guid: 1e4a1f89eb2ef2d43add9b71efe94541, type: 2}
+  - healthSlider: {fileID: 114177467530967606, guid: 19cafcb7a4c76a34eb7d38f1bfe98e7f,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
