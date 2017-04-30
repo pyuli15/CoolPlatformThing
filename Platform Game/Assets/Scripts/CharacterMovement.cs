@@ -19,9 +19,9 @@ public class CharacterMovement : MonoBehaviour {
     KeyCode right;
 
     //for shooting
-    public Transform gunTip;
+    //public Transform gunTip;
     public GameObject bullet;
-    public ParticleSystem Dust;
+    public GameObject Dust;
     float fireRate = 0.5f;
     float nextFire = 0f;
 
@@ -36,7 +36,6 @@ public class CharacterMovement : MonoBehaviour {
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Dust = GetComponent<ParticleSystem>();
         jumpButton = KeyCode.Z;
         left = KeyCode.LeftArrow;
         right = KeyCode.RightArrow;
@@ -52,12 +51,14 @@ public class CharacterMovement : MonoBehaviour {
         {
             jumpFlag = true;
         }
+        /*
+                //player shooting
+                if (Input.GetAxisRaw("Fire1") > 0)
+                {
+                    fireRocket();
+                }
 
-        //player shooting
-        if (Input.GetAxisRaw("Fire1") > 0)
-        {
-            fireRocket();
-        }
+        */
     }
     void FixedUpdate()
     {
@@ -108,11 +109,11 @@ public class CharacterMovement : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D coll)
     {
         Debug.Log("hitting something");
-        if (coll.gameObject.tag == "Platform")
+        if (coll.gameObject.tag == "Ground")
         {
             Debug.Log("hitting PLATFORM");
-            Dust.Play();
-           
+            Instantiate(Dust, transform.position, transform.rotation);
+
 
         }
         if (coll.gameObject.tag == "Enemy")
@@ -123,6 +124,7 @@ public class CharacterMovement : MonoBehaviour {
         
     }
 
+    /*
     void fireRocket()
     {
         if (Time.time > nextFire)
@@ -131,6 +133,7 @@ public class CharacterMovement : MonoBehaviour {
             Instantiate(bullet, gunTip.position, Quaternion.Euler(new Vector3(0, 0, 0)));
         }
     }
+    */
 
     public void PlayHitSound()
     {

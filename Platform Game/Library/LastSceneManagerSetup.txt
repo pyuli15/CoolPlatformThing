@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Levels/Platformer.unity
+- path: Assets/Levels/level7.unity
   isLoaded: 1
   isActive: 1
