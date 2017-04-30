@@ -21,6 +21,7 @@ public class CharacterMovement : MonoBehaviour {
     //for shooting
     public Transform gunTip;
     public GameObject bullet;
+    public ParticleSystem Dust;
     float fireRate = 0.5f;
     float nextFire = 0f;
 
@@ -35,6 +36,7 @@ public class CharacterMovement : MonoBehaviour {
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        Dust = GetComponent<ParticleSystem>();
         jumpButton = KeyCode.Z;
         left = KeyCode.LeftArrow;
         right = KeyCode.RightArrow;
@@ -109,6 +111,7 @@ public class CharacterMovement : MonoBehaviour {
         if (coll.gameObject.tag == "Platform")
         {
             Debug.Log("hitting PLATFORM");
+            Dust.Play();
            
 
         }
