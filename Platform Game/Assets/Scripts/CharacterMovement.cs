@@ -8,6 +8,8 @@ public class CharacterMovement : MonoBehaviour {
     Rigidbody2D rb;
     public AudioSource source;
     public AudioClip mural;
+    public AudioClip roof;
+    public AudioClip jump;
     public float jumpForce;
     public float floorDrag;
     public float airDrag;
@@ -25,6 +27,7 @@ public class CharacterMovement : MonoBehaviour {
     //public Transform gunTip;
     public GameObject bullet;
     public GameObject Dust;
+    public GameObject sparks;
     public Text countText;
     float fireRate = 0.5f;
     float nextFire = 0f;
@@ -109,6 +112,7 @@ public class CharacterMovement : MonoBehaviour {
         if (c.gameObject.tag == "Mural")
         {
             source.PlayOneShot(mural);
+            Instantiate(sparks, transform.position, transform.rotation);
             count = count + 1;
             SetCountText();
         }
@@ -124,7 +128,7 @@ public class CharacterMovement : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D coll)
     {
         Debug.Log("hitting something");
-        if (coll.gameObject.tag == "Ground")
+        if (coll.gameObject.tag == "Platform")
         {
             Debug.Log("hitting PLATFORM");
             Instantiate(Dust, transform.position, transform.rotation);
@@ -136,7 +140,17 @@ public class CharacterMovement : MonoBehaviour {
             Debug.Log("Hitting Enemy");
         }
 
-        
+        if (coll.gameObject.tag == "Metal")
+        {
+            source.PlayOneShot(roof);
+        }
+
+        if (coll.gameObject.tag == "Tramp")
+        {
+            source.PlayOneShot(jump);
+        }
+
+
     }
 
     /*
