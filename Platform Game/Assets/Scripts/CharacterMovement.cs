@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterMovement : MonoBehaviour {
 
     Rigidbody2D rb;
+    public AudioSource source;
+    public AudioClip mural;
     public float jumpForce;
     public float floorDrag;
     public float airDrag;
@@ -22,12 +25,15 @@ public class CharacterMovement : MonoBehaviour {
     //public Transform gunTip;
     public GameObject bullet;
     public GameObject Dust;
+    public Text countText;
     float fireRate = 0.5f;
     float nextFire = 0f;
 
     public AudioClip[] hitSnds;
 
     private bool facingRight;
+    private int count;
+    
 
 
 
@@ -39,7 +45,9 @@ public class CharacterMovement : MonoBehaviour {
         jumpButton = KeyCode.Z;
         left = KeyCode.LeftArrow;
         right = KeyCode.RightArrow;
-
+        count = 0;
+        SetCountText();
+        
         
        
     }
@@ -97,6 +105,13 @@ public class CharacterMovement : MonoBehaviour {
     {
         onFloor = true;
         floorObjs++;
+
+        if (c.gameObject.tag == "Mural")
+        {
+            source.PlayOneShot(mural);
+            count = count + 1;
+            SetCountText();
+        }
     }
     private void OnTriggerExit2D(Collider2D c)
     {
@@ -139,6 +154,11 @@ public class CharacterMovement : MonoBehaviour {
     {
         Sound.me.PlaySound(hitSnds[Random.Range(0, hitSnds.Length)], 1f);
         
+    }
+
+    void SetCountText()
+    {
+        countText.text = "Murals Found: " + count.ToString();
     }
 }
 

@@ -4,9 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class YouDead : MonoBehaviour {
+    public AudioSource source;
+    public AudioClip hover;
+    public AudioClip click;
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -24,4 +28,16 @@ public class YouDead : MonoBehaviour {
     {
         SceneManager.LoadScene(1);
     }
+
+    public void OnHover()
+    {
+        source.PlayOneShot(hover);
+    }
+
+    public void OnClick()
+    {
+
+        source.PlayOneShot(click);
+    }
+
 }
